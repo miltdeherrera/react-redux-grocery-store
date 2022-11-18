@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'react-redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 
 const rootReducer = combineReducers({
 

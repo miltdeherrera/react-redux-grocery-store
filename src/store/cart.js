@@ -4,6 +4,8 @@ const ADD_ONE_PRODUCT = `cart/ADD_ONE_PRODUCT`;
 const REMOVE_ONE_PRODUCT = `cart/REMOVE_ONE_PRODUCT`;
 const PURCHASE_CART = `cart/PURCHASE_CART`;
 
+export const getCart = (state) => Object.values(state.cart);
+
 export default function cartReducer (state = {}, action) {
   switch (action.type) {
     case ADD_PRODUCT:

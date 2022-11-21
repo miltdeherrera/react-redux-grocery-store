@@ -1,13 +1,18 @@
 import CartItem from './CartItem';
 import './Cart.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { purchaseCart } from './../../store/cart';
+import { purchaseCart, getCart } from './../../store/cart';
+import { useEffect } from 'react';
 
 function Cart() {
-  const cart = useSelector(state => state.cart);
+  const cart = useSelector(getCart);
   const produce = useSelector(state => state.produce);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    
+  }, [cart]);
 
   const purchaseItems = (e) => {
     e.preventDefault();

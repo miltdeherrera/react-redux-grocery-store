@@ -3,6 +3,8 @@ import produceData from './../mockData/produce.json';
 const POPULATE = `produce/POPULATE`;
 const CHANGE_LIKE = `product/CHANGE_LIKE`;
 
+export const getAllProduce = (state) => Object.values(state.produce);
+
 export default function produceReducer (state = {}, action) {
   switch (action.type) {
     case POPULATE:

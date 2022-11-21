@@ -1,5 +1,6 @@
 const ADD_PRODUCT = `cart/ADD_PRODUCT`;
 const REMOVE_PRODUCT = `cart/REMOVE_PRODUCT`;
+const ADD_ONE_PRODUCT = `cart/ADD_ONE_PRODUCT`;
 
 export default function cartReducer (state = {}, action) {
   switch (action.type) {
@@ -29,6 +30,17 @@ export default function cartReducer (state = {}, action) {
         // product not in cart, so no change
         return state;
       }
+    case ADD_ONE_PRODUCT:
+      if (state.hasOwnProperty(action.id)) {
+        const newState = {
+          ...state
+        };
+        newState[action.id].count++;
+        return newState;
+      } else {
+        // product not in cart, so no change
+        return state;
+      }
     default:
       return state;
   }
@@ -44,6 +56,13 @@ export const addProductCart = (id) => {
 export const removeProductCart = (id) => {
   return {
     type: REMOVE_PRODUCT,
+    id
+  }
+}
+
+export const addOneProductCart = (id) => {
+  return {
+    type: ADD_ONE_PRODUCT,
     id
   }
 }

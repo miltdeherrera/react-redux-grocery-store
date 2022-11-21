@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { removeProductCart } from '../../store/cart';
+import { removeProductCart, addOneProductCart } from '../../store/cart';
 import { useDispatch } from 'react-redux';
 
 function CartItem({ item }) {
@@ -14,6 +14,10 @@ function CartItem({ item }) {
     dispatch(removeProductCart(item.id));
   }
 
+  const addOneProduct = () => {
+    dispatch(addOneProductCart(item.id));
+  }
+
   return (
     <li className="cart-item">
       <div className="cart-item-header">{item.name}</div>
@@ -24,6 +28,7 @@ function CartItem({ item }) {
         />
         <button
           className="cart-item-button"
+          onClick={addOneProduct}
         >
           +
         </button>

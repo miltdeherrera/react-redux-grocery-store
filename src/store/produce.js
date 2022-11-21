@@ -1,6 +1,7 @@
 import produceData from './../mockData/produce.json';
 
 const POPULATE = `produce/POPULATE`;
+const CHANGE_LIKE = `product/CHANGE_LIKE`;
 
 export default function produceReducer (state = {}, action) {
   switch (action.type) {
@@ -10,6 +11,12 @@ export default function produceReducer (state = {}, action) {
         newState[obj.id]=obj;
       })
       return newState;
+    case CHANGE_LIKE:
+      const newLikeState = {
+        ...state
+      };
+      newLikeState[action.id].liked = !(newLikeState[action.id].liked);
+      return newLikeState;
     default:
       return state;
   }
@@ -22,3 +29,10 @@ export const populateProduce = () => {
     produce: produceData
   };
 };
+
+export const changeLikeProduce = (id) => {
+  return {
+    type: CHANGE_LIKE,
+    id
+  }
+}

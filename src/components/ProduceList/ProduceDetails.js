@@ -5,7 +5,6 @@ function ProduceDetails({ produce }) {
   const cartItem = {};
   const dispatch = useDispatch();
   const addProductClick = () => {
-    console.log('click');
     dispatch(addProductCart(produce.id));
   }
 

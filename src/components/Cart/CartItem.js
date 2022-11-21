@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { removeProductCart, addOneProductCart } from '../../store/cart';
+import { removeProductCart, addOneProductCart, removeOneProductCart } from '../../store/cart';
 import { useDispatch } from 'react-redux';
 
 function CartItem({ item }) {
@@ -18,6 +18,14 @@ function CartItem({ item }) {
     dispatch(addOneProductCart(item.id));
   }
 
+  const removeOneProduct = () => {
+    if (item.count - 1 <= 0 || count <= 0) {
+      dispatch(removeProductCart(item.id));
+    } else {
+      dispatch(removeOneProductCart(item.id));
+    }
+  }
+
   return (
     <li className="cart-item">
       <div className="cart-item-header">{item.name}</div>
@@ -34,6 +42,7 @@ function CartItem({ item }) {
         </button>
         <button
           className="cart-item-button"
+          onClick={removeOneProduct}
         >
           -
         </button>

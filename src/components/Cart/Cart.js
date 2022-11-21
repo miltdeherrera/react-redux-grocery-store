@@ -1,10 +1,18 @@
 import CartItem from './CartItem';
 import './Cart.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { purchaseCart } from './../../store/cart';
 
 function Cart() {
   const cart = useSelector(state => state.cart);
-  const produce = useSelector(state => state.produce);;
+  const produce = useSelector(state => state.produce);
+
+  const dispatch = useDispatch();
+
+  const purchaseItems = (e) => {
+    e.preventDefault();
+    dispatch(purchaseCart());
+  }
 
   const cartItems = Object.values(cart)
     .map(item => {
@@ -34,7 +42,7 @@ function Cart() {
         {cartItems.map(item => <CartItem key={item.id} item={item}/>)}
       </ul>
       <hr />
-      <form onSubmit={onSubmit}>
+      <form onSubmit={purchaseItems}>
         <button type="submit">Purchase</button>
       </form>
     </div>

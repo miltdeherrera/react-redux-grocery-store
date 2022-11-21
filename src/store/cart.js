@@ -2,6 +2,7 @@ const ADD_PRODUCT = `cart/ADD_PRODUCT`;
 const REMOVE_PRODUCT = `cart/REMOVE_PRODUCT`;
 const ADD_ONE_PRODUCT = `cart/ADD_ONE_PRODUCT`;
 const REMOVE_ONE_PRODUCT = `cart/REMOVE_ONE_PRODUCT`;
+const PURCHASE_CART = `cart/PURCHASE_CART`;
 
 export default function cartReducer (state = {}, action) {
   switch (action.type) {
@@ -53,6 +54,10 @@ export default function cartReducer (state = {}, action) {
         // product not in cart, so no change
         return state;
       }
+    case PURCHASE_CART:
+      // in a fuller application, would send product contents to purchasing stage.
+      const emptyCart = {};
+      return emptyCart;
     default:
       return state;
   }
@@ -83,5 +88,11 @@ export const removeOneProductCart = (id) => {
   return {
     type: REMOVE_ONE_PRODUCT,
     id
+  }
+}
+
+export const purchaseCart = () => {
+  return {
+    type: PURCHASE_CART
   }
 }

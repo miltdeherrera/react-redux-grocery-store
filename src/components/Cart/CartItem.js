@@ -33,6 +33,7 @@ function CartItem({ item }) {
         <input
           type="number"
           value={count}
+          onChange={() => count}
         />
         <button
           className="cart-item-button"
